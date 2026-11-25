@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hasti moradi | Computer Engineering Portfolio</title>
+<meta name="description" content="Portfolio of a computer engineering student: skills, projects and contact.">
+<meta name="theme-color" content="#04060c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Sora:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. Colors and basics (change colors here) ===== */
+:root{
+  --black:#04060c; --navy:#0a1229; --navy-2:#101c3d; --line:#1c2b59;
+  --text:#e8eeff; --muted:#93a1cc; --blue:#2f80ff; --blue-hi:#5aa2ff;
+  --head:"Sora","Segoe UI",system-ui,sans-serif;
+  --body:"DM Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth; scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{margin:0; background:var(--black); color:var(--text); font:400 1rem/1.7 var(--body); -webkit-text-size-adjust:100%}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); background:var(--black); z-index:30}
+h1,h2,h3{font-family:var(--head); line-height:1.2; margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue-hi); outline-offset:3px; border-radius:4px}
+.wrap{width:min(1080px,100% - 40px); margin-inline:auto}
+section{padding:88px 0}
+section.alt{background:var(--navy)}
+.section-title{font-size:clamp(1.6rem,5vw,2.2rem); margin-bottom:12px}
+.section-intro{color:var(--muted); max-width:60ch; margin-bottom:40px}
+
+/* ===== 2. Header and menu ===== */
+header{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:rgba(4,6,12,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.bar{display:flex; align-items:center; justify-content:space-between; height:64px}
+.brand{font:700 1.8rem var(--head); text-decoration:none; letter-spacing:.2px}
+.brand span{color:var(--blue-hi)}
+nav ul{display:flex; gap:28px; list-style:none; margin:0; padding:0}
+nav a{text-decoration:none; color:var(--muted); font-weight:500; padding:6px 0; border-bottom:2px solid transparent; transition:color .2s,border-color .2s}
+nav a:hover,nav a.active{color:var(--text); border-color:var(--blue)}
+.menu-btn{display:none; background:none; border:1px solid var(--line); color:var(--text); width:44px; height:44px; border-radius:10px; font-size:1.3rem; cursor:pointer}
+
+/* ===== 3. Home ===== */
+.hero{padding:72px 0 88px; background:radial-gradient(900px 480px at 80% -10%,var(--navy-2) 0%,transparent 70%),var(--black)}
+.hero-grid{display:grid; gap:44px; align-items:center}
+.hero h1{font-size:clamp(2.1rem,8vw,3.6rem); font-weight:700; max-width:16ch} .hero h1 {
+  text-shadow: 0 0 22px rgba(47, 128, 255, 0.3);
+  }
+.hero .lead{color:var(--muted); font-size:1.1rem; margin:20px 0 32px; max-width:46ch}
+.btns{display:flex; flex-wrap:wrap; gap:14px}
+.btn{display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 26px; border-radius:10px; font-weight:500; text-decoration:none; border:1px solid var(--blue); transition:background .2s,box-shadow .2s}
+.btn.primary{background:var(--blue); color:#fff}
+.btn.primary:hover{background:var(--blue-hi); box-shadow:0 0 24px rgba(47,128,255,.45)}
+.btn.ghost{color:var(--blue-hi)}
+.btn.ghost:hover{background:rgba(47,128,255,.12)}
+.code{background:var(--navy); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 0 0 1px rgba(47,128,255,.08),0 20px 60px rgba(47,128,255,.12)}
+.code-top{display:flex; gap:7px; padding:12px 16px; border-bottom:1px solid var(--line)}
+.code-top i{width:10px; height:10px; border-radius:50%; background:var(--line)}
+.code-top i:last-child{background:var(--blue)}
+.code pre{margin:0; padding:20px; min-height:230px; font:400 .92rem/1.8 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:#c9d6ff; white-space:pre-wrap; overflow-wrap:anywhere}
+.k{color:var(--blue-hi)} .s{color:#8fd0ff}
+.caret{display:inline-block; width:8px; height:1em; background:var(--blue-hi); vertical-align:-2px; animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+  .hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: #2f80ff;
+  filter: blur(110px);
+  opacity: 0.22;
+  top: 10%;
+  right: -80px;
+  pointer-events: none;
+}
+  @keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  animation: fadeUp 2s ease forwards;
+}
+
+.hero .lead {
+  animation: fadeUp 2.5s ease forwards;
+}
+
+.hero .btns {
+  animation: fadeUp 3s ease forwards;
+}
+
+/* ===== 4. About ===== */
+.about-grid{display:grid; gap:36px}
+.about-text p+p{margin-top:16px}
+.about-text p{color:#c3cdf0}
+.facts{display:grid; gap:0; border-left:2px solid var(--blue); padding-left:22px; align-content:start}
+.facts div{padding:12px 0; border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{color:var(--muted); font-size:.9rem}
+.facts dd{margin:0; font-weight:500}
+.facts{margin:0}
+
+/* ===== 5. Skills ===== */
+.skill-groups{display:grid; gap:28px}
+.skill-group h3{font-size:1.05rem; margin-bottom:14px}
+.chips{display:flex; flex-wrap:wrap; gap:10px}
+.chip{padding:8px 16px; border:1px solid var(--line); border-radius:999px; background:var(--navy-2); font-size:.95rem}
+.chip.learning{border-style:dashed; color:var(--muted); background:transparent}
+
+/* ===== 6. Projects ===== */
+.projects{display:grid; gap:20px}
+.project{background:var(--navy); border:1px solid var(--line); border-radius:14px; padding:26px; display:flex; flex-direction:column; gap:14px; transition:border-color .2s,transform .2s}
+.project:hover{border-color:var(--blue); transform:translateY(-3px)}
+.project.featured{background:linear-gradient(135deg,var(--navy-2),var(--navy)); border-color:var(--blue)}
+.project h3{font-size:1.2rem}
+.project p{color:#b4c0e6}
+.tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto}
+.tags span{font-size:.82rem; color:var(--blue-hi); border:1px solid var(--line); border-radius:6px; padding:3px 10px}
+.project a{color:var(--blue-hi); font-weight:500; text-decoration:none}
+.project a:hover{text-decoration:underline}
+.project.visible {
+  animation: fadeUp 1s ease both;
+}
+/* ===== 7. Contact ===== */
+.contact-grid{display:grid; gap:36px}
+form{display:grid; gap:16px}
+label{display:grid; gap:6px; font-weight:500; font-size:.95rem}
+input,textarea{font:inherit; color:var(--text); background:var(--black); border:1px solid var(--line); border-radius:10px; padding:13px 14px; width:100%}
+input:focus,textarea:focus{outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(47,128,255,.25)}
+textarea{min-height:140px; resize:vertical}
+button.btn{cursor:pointer; font:inherit; font-weight:500}
+.status{min-height:1.5em; color:var(--blue-hi); font-size:.95rem}
+.links{list-style:none; margin:0; padding:0; display:grid; gap:14px}
+.links a{color:var(--text); text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px}
+.links a:hover{color:var(--blue-hi); border-color:var(--blue)}
+.links small{display:block; color:var(--muted)}
+footer{border-top:1px solid var(--line); padding:28px 0; color:var(--muted); font-size:.9rem; text-align:center}
+
+/* ===== 8. Bigger screens ===== */
+@media (min-width:860px){
+  .hero-grid{grid-template-columns:1.1fr .9fr}
+  .about-grid{grid-template-columns:1.4fr 1fr}
+  .skill-groups{grid-template-columns:repeat(3,1fr)}
+  .projects{grid-template-columns:repeat(2,1fr)}
+  .project.featured{grid-column:span 2}
+  .contact-grid{grid-template-columns:1.2fr .8fr}
+}
+/* ===== 9. Phone menu ===== */
+@media (max-width:760px){
+  section{padding:64px 0}
+  .menu-btn{display:block}
+  nav{position:absolute; left:0; right:0; top:100%; background:var(--black); border-bottom:1px solid var(--line); display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column; gap:0; padding:8px 20px 16px}
+  nav a{display:block; padding:14px 0; border-bottom:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto} *{transition:none!important; animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#home">Hasti<span>Moradi</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">&#9776;</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Computer Engineering Student | Future Innovator.</h1>
+      <p class="lead">I’m Hasti moradi. I’m learning how hardware and software fit together, one project at a time.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn ghost" href="#contact">Contact me</a>
+      </div>
+    </div>
+    <div class="code" aria-hidden="true">
+      <div class="code-top"><i></i><i></i><i></i></div>
+      <pre id="typed"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="alt" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <h2 class="section-title">About me</h2>
+      <p>I'm Hasti Moradi, a Computer Engineering student passionate about technology, programming, and building creative digital experiences.</p>
+      <p>I'm currently developing my programming skills and exploring the world of software development.</p>
+      <p>I’m looking for internships and teams where I can learn from experienced engineers and contribute where I can.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Studying</dt><dd>Computer Engineering</dd></div>
+      <div><dt>Focus</dt><dd>Programming and electronics</dd></div>
+      <div><dt>Location</dt><dd>Your city, Your country</dd></div>
+      <div><dt>Languages</dt><dd>Persian, English</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-intro">What I use today, and what I’m learning next.</p>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <div class="chips"><span class="chip">Python - Bignner</span><span class="chip">HTML - learning</span><span class="chip">C - learning</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Hardware and electronics</h3>
+        <div class="chips"><span class="chip">Digital logic</span><span class="chip">Arduino</span><span class="chip">Circuit basics</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools</h3>
+        <div class="chips"><span class="chip">Git and GitHub</span><span class="chip">VS Code</span><span class="chip">Linux basics</span></div>
+      </div>
+    </div>
+    <div class="skill-group" style="margin-top:28px">
+      <h3>Learning now</h3>
+      <div class="chips"><span class="chip learning">Data structures</span><span class="chip learning">C++</span><span class="chip learning">Embedded systems</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="alt" id="projects">
+  <div class="wrap">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-intro">Replace these examples with your own work as you build it.</p>
+    <div class="projects">
+      < class="project featured">      
+    <h3>Smart Room Monitor</h3>
+<article class="project featured">
+  <h3>Personal Portfolio Website</h3>
+  <p>A personal website built to showcase my skills, projects and journey in computer engineering.</p>
+  <div class="tags">
+    <span>HTML</span>
+    <span>CSS</span>
+  </div>
+  <span>Currently Building</span>
+</article>
+      <article class="project">
+        <h3>Personal Portfolio</h3>
+        <p>This website, written with plain HTML, CSS and JavaScript and built entirely on a phone.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <a href="#">View on GitHub</a>
+      </article>
+      <article class="project">
+        <h3>Number Guessing Game</h3>
+        <p>A command-line game in Python that practices loops, conditions and user input.</p>
+        <div class="tags"><span>Python</span><span>Logic</span></div>
+        <a href="#">View on GitHub</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 class="section-title">Contact</h2>
+      <p class="section-intro">Have an opportunity or a question? Send a message and I’ll reply soon.</p>
+      <form id="contactForm" novalidate>
+        <label>your name<input type="text" id="name" autocomplete="name" required></label>
+        <label>email <input type="email" id="email" autocomplete="email" required></label>
+        <label>Message<textarea id="message" required></textarea></label>
+        <button class="btn primary" type="submit">Send message</button>
+        <p class="status" id="status" role="status"></p>
+      </form>
+    </div>
+    <ul class="links">
+      <li><a href="mailto:hastymardis@gmail.com">hastymardis@gmail.com</a><small>Email</small></li>
+      <li><a href="https://github.com/" target="_blank" rel="noopener">github.com/yourname</a><small>GitHub</small></li>
+      <li><a href="https://linkedin.com/" target="_blank" rel="noopener">linkedin.com/in/yourname</a><small>LinkedIn</small></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="year"></span> Hasti. Built with HTML, CSS and JavaScript.</div></footer>
+
+<script>
+// ===== Phone menu =====
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.getElementById('nav');
+menuBtn.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+});
+nav.addEventListener('click', e => {
+  if (e.target.tagName === 'A') { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+});
+
+// ===== Highlight the current section in the menu =====
+const links = document.querySelectorAll('nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('main section').forEach(s => observer.observe(s));
+
+// ===== Typing effect in the hero (edit the lines below) =====
+const lines = [
+  '<span class="k">const</span> me = {',
+  '  role: <span class="s">"Computer engineering student"</span>,',
+  '  focus: [<span class="s">"software"</span>, <span class="s">"electronics"</span>],',
+  '  learning: <span class="k">true</span>,',
+  '};'
+];
+const typed = document.getElementById('typed');
+const html = lines.join('\n');
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce) {
+  typed.innerHTML = html;
+} else {
+  let i = 0, out = '';
+  (function step() {
+    if (html[i] === '<') { const end = html.indexOf('>', i); out += html.slice(i, end + 1); i = end + 1; }
+    else { out += html[i]; i++; }
+    typed.innerHTML = out + '<span class="caret"></span>';
+    if (i < html.length) setTimeout(step, 28);
+  })();
+}
+
+// ===== Contact form: opens the visitor's email app =====
+const MY_EMAIL = 'you@example.com'; // <- change this to your real email
+const form = document.getElementById('contactForm');
+const statusEl = document.getElementById('status');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name || !email.includes('@') || !message) {
+    statusEl.textContent = 'Please fill in Your name, a valid email and a message.';
+    return;
+  }
+  const subject = encodeURIComponent('Portfolio message from ' + name);
+  const body = encodeURIComponent(message + '\n\nReply to: ' + email);
+  statusEl.textContent = 'Opening your email app…';
+  window.location.href = 'mailto:' + MY_EMAIL + '?subject=' + subject + '&body=' + body;
+});
+
+document.getElementById('year').textContent = new Date().getFullYear(); 
+  
+
+
+const projects = document.querySelectorAll('.project');
+
+const projectObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+projects.forEach(project => {
+  projectObserver.observe(project);
+});
+</script>
+</body>
+</html>
+
